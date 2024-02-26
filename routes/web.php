@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Frontend\Admin\AdminController;
+use App\Http\Controllers\Frontend\Instractor\InstractorController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,5 +29,16 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+
+// forntend Instractor part 
+
+Route::get('/instractor/dashboard', [InstractorController::class, 'index'])->middleware(['auth', 'verified'])->name('instractor.dashboard');
+
+
+// frontend Admin part 
+
+Route::get('/admin/dashboard', [AdminController::class, 'index'])->middleware(['auth', 'verified'])->name('admin.dashboard');
 
 require __DIR__.'/auth.php';
