@@ -34,11 +34,11 @@ Route::middleware('auth')->group(function () {
 
 // forntend Instractor part 
 
-Route::get('/instractor/dashboard', [InstractorController::class, 'index'])->middleware(['auth', 'verified'])->name('instractor.dashboard');
+Route::get('/instractor/dashboard', [InstractorController::class, 'index'])->name('instractor.dashboard');
 
 
 // frontend Admin part 
 
-Route::get('/admin/dashboard', [AdminController::class, 'index'])->middleware(['auth', 'verified'])->name('admin.dashboard');
+Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
 
 require __DIR__.'/auth.php';
