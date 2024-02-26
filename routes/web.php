@@ -33,12 +33,15 @@ Route::middleware('auth')->group(function () {
 
 
 // forntend Instractor part 
-
+Route::middleware(['auth','roles:instractor'])->group(function(){
 Route::get('/instractor/dashboard', [InstractorController::class, 'index'])->name('instractor.dashboard');
-
+});
 
 // frontend Admin part 
 
-Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+//admin middleware protected role 
+Route::middleware(['auth','roles:admin'])->group(function(){
+    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+});
 
 require __DIR__.'/auth.php';
