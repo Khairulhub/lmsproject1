@@ -42,6 +42,7 @@ Route::get('/instractor/dashboard', [InstractorController::class, 'index'])->nam
 //admin middleware protected role 
 Route::middleware(['auth','roles:admin'])->group(function(){
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin/logout', [AdminController::class, 'adminLogout'])->name('adminLogout');
 });
 
 require __DIR__.'/auth.php';
