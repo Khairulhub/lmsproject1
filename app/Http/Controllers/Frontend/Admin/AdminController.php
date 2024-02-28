@@ -25,11 +25,13 @@ public function adminLogout(Request $request)
 
     $request->session()->regenerateToken();
 
-    return redirect('/login');
+    return redirect('/admin/login');
 }
 
 
-
+public function adminlogin(){
+    return view('Backend.Admin.admin_login');
+}
 
 
 
